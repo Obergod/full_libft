@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mafioron <mafioron@student.42.fr>          +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 18:23:05 by mafioron          #+#    #+#             */
-/*   Updated: 2024/12/03 18:23:08 by mafioron         ###   ########.fr       */
+/*   Created: 2024/12/03 18:22:50 by mafioron          #+#    #+#            */
+/*   Updated: 2024/12/03 18:22:53 by mafioron         ###   ########.fr      */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 size_t	ft_strlen(const char *s)
 {

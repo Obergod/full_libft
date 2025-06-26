@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 char	*stock_extend(char *stock, char *buffer)
 {
@@ -18,11 +19,11 @@ char	*stock_extend(char *stock, char *buffer)
 
 	if (!stock)
 	{
-		temp = ft_strdup(buffer);
+		temp = gnl_strdup(buffer);
 		free(buffer);
 		return (temp);
 	}
-	temp = ft_strjoin(stock, buffer);
+	temp = gnl_strjoin(stock, buffer);
 	if (stock)
 		free(stock);
 	if (buffer)
@@ -38,7 +39,7 @@ char	*extract_line(char *stock, int fd)
 	i = 1;
 	while (!modif_strchr(stock, '\n') && i != 0)
 	{
-		buff = (char *)ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+		buff = (char *)gnl_calloc(BUFFER_SIZE + 1, sizeof(char));
 		if (!buff)
 			return (NULL);
 		i = read(fd, buff, BUFFER_SIZE);
@@ -66,7 +67,7 @@ char	*precise_line(char *stock)
 	i = 0;
 	while (stock[i] != '\n' && stock[i])
 		i++;
-	res = (char *)ft_calloc(i + 2, sizeof(char));
+	res = (char *)gnl_calloc(i + 2, sizeof(char));
 	if (!res)
 		return (NULL);
 	while (++j < i + 1)
@@ -82,7 +83,12 @@ char	*after_line(char *stock)
 	i = 0;
 	while (stock[i] != '\n')
 		i++;
-	s = ft_strdup(stock + (i + 1));
+	if (stock[i + 1] == '\0')
+	{
+		free(stock);
+		return (NULL);
+	}
+	s = gnl_strdup(stock + (i + 1));
 	if (!s)
 		return (NULL);
 	free(stock);
@@ -97,7 +103,7 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (free(stock[fd]), stock[fd] = NULL, NULL);
 	if (!stock[fd])
-		stock[fd] = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+		stock[fd] = gnl_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!stock[fd])
 		return (NULL);
 	stock[fd] = extract_line(stock[fd], fd);
@@ -107,15 +113,12 @@ char	*get_next_line(int fd)
 		return (free(stock[fd]), stock[fd] = NULL, NULL);
 	if (!modif_strchr(stock[fd], '\n'))
 	{
-		buff = ft_strdup(stock[fd]);
+		buff = gnl_strdup(stock[fd]);
 		return (free(stock[fd]), stock[fd] = NULL, buff);
 	}
-	else
-	{
-		buff = precise_line(stock[fd]);
-		stock[fd] = after_line(stock[fd]);
-		return (buff);
-	}
+	buff = precise_line(stock[fd]);
+	stock[fd] = after_line(stock[fd]);
+	return (buff);
 }
 /*
 #include <stdio.h>

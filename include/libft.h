@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ufalzone <ufalzone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 17:31:26 by mafioron          #+#    #+#             */
-/*   Updated: 2024/11/15 16:54:27 by mafioron         ###   ########.fr       */
+/*   Updated: 2025/04/24 21:09:45 by ufalzone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int					ft_isascii(int c);
 int					ft_isprint(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
-
+char				*ft_strcat(char *dest, const char *src);
 int					ft_atoi(const char *nptr);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t				ft_strlen(const char *s);
@@ -82,8 +82,8 @@ t_list				*ft_lstnew(void *content);
 t_list				*ft_lstlast(t_list *lst);
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
-void				ft_lstadd_front(t_list **lst, t_list *new);
-void				ft_lstadd_back(t_list **lst, t_list *new);
+void				ft_lstadd_front(t_list **lst, t_list *ne);
+void				ft_lstadd_back(t_list **lst, t_list *ne);
 void				ft_lstdelone(t_list *lst, void (*del)(void *));
 void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
@@ -98,5 +98,7 @@ long				ft_atol(const char *nptr);
 int					ft_strcmp(const char *s1, const char *s2);
 void				ft_free_split(char	**split);
 int					ft_atoi_base(char *nbr, char *base_from);
+char				*ft_strstr(const char *big, const char *little);
+int					ft_is_even(int nb);
 
 #endif

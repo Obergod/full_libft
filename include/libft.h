@@ -20,6 +20,7 @@
 # include <string.h>
 # include <sys/stat.h>
 # include <unistd.h>
+# include <stdbool.h>
 
 typedef struct s_list
 {
@@ -100,5 +101,6 @@ void				ft_free_split(char	**split);
 int					ft_atoi_base(char *nbr, char *base_from);
 char				*ft_strstr(const char *big, const char *little);
 int					ft_is_even(int nb);
+char				**ft_2dstrdup(char **ss);
 
 #endif

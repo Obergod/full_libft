@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_2dstrdup.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafioron <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 18:57:06 by mafioron          #+#    #+#             */
-/*   Updated: 2024/11/14 14:30:12 by mafioron         ###   ########.fr       */
+/*   Created: 2025/07/03 17:55:55 by mafioron          #+#    #+#             */
+/*   Updated: 2025/07/03 17:55:58 by mafioron         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+char	**ft_2dstrdup(char **ss)
 {
-	size_t	i;
+	int	i;
+	char	**dst;
 
 	i = 0;
-	if (n < 1)
-		return (0);
-	if (!s1 || !s2)
-		return (-1);
-	while (s1[i] && s2[i] && s1[i] == s2[i] && i < n - 1)
+	while (ss[i])
 		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	dst = malloc(sizeof(char *) * (i + 1));
+	if (!dst)
+		return (NULL);
+	i = -1;
+	while (ss[++i])
+	{
+		dst[i] = ft_strdup(ss[i]);
+		if (!dst[i])
+		{
+			free_split(dst);
+			return (NULL);
+		}
+	}
+	dst[i] = NULL;
+	return (dst);
 }

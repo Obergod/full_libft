@@ -91,5 +91,7 @@ int					ft_lstsize(t_list *lst);
 int					count_words(char const *s, char c);
 int					ft_abs(int nb);
 void				ft_swap(int *a, int *b);
+void				ft_free_split(char	**split);
+char				**ft_2dstrdup(char **ss);
 
 #endif

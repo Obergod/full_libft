@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/libft.h"
 
 char	**ft_2dstrdup(char **ss)
 {
@@ -29,7 +29,6 @@ char	**ft_2dstrdup(char **ss)
 		dst[i] = ft_strdup(ss[i]);
 		if (!dst[i])
 		{
-			free_split(dst);
 			return (NULL);
 		}
 	}

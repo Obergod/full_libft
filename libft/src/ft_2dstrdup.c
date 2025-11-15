@@ -14,7 +14,7 @@
 
 char	**ft_2dstrdup(char **ss)
 {
-	int	i;
+	int		i;
 	char	**dst;
 
 	i = 0;
